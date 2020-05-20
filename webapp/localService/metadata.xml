@@ -1,0 +1,47 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z_CDS_SALES_ITEM_CDS" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Z_CDS_SALES_ITEMType" sap:semantics="aggregate" sap:label="test" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/><Property Name="salesorg" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Sales Organization"/><Property Name="plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant"/><Property Name="plantdesc" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Plant Description"/><Property Name="distchldesc" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Distribution Channel"/><Property Name="divisiondesc" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Division"/><Property Name="materialgroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Material Group"/><Property Name="overallstatus" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Overall Status"/><Property Name="orderstatus" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Order Status"/><Property Name="yr" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Year"/><Property Name="moyr" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Month-Year"/><Property Name="mos" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Month"/><Property Name="order_qty_total_val" Type="Edm.Int64" sap:aggregation-role="measure" sap:label="Total Order Value" sap:filterable="false"/><Property Name="open_qty_total_val" Type="Edm.Int64" sap:aggregation-role="measure" sap:label="Open Order value" sap:filterable="false"/><Property Name="Credit_Limit" Type="Edm.Int64" sap:aggregation-role="measure" sap:label="Credit Limit" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="Z_CDS_SALES_ITEM_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="Z_CDS_SALES_ITEM" EntityType="Z_CDS_SALES_ITEM_CDS.Z_CDS_SALES_ITEMType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/></EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Z_CDS_SALES_ITEM_CDS.Z_CDS_SALES_ITEM_CDS_Entities/Z_CDS_SALES_ITEM">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="NonFilterableProperties">
+							<Collection>
+								<PropertyPath>ID</PropertyPath>
+								<PropertyPath>order_qty_total_val</PropertyPath>
+								<PropertyPath>open_qty_total_val</PropertyPath>
+								<PropertyPath>Credit_Limit</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.SortRestrictions">
+					<Record>
+						<PropertyValue Property="NonSortableProperties">
+							<Collection>
+								<PropertyPath>ID</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/Z_CDS_SALES_ITEM_CDS/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/Z_CDS_SALES_ITEM_CDS/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
